@@ -1,0 +1,46 @@
+.cardTask {
+    gap: 1rem;
+    display: flex;
+    align-items: center;
+    background: var(--gray-500);
+    border: 1px solid var(--gray-400);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.cardTask img {
+    color: var(--gray-300);
+    font-weight: 400;
+    height: 2rem;
+}
+
+.cardTask p {
+    font-family: 'Inter', sans-serif;
+    color: var(--gray-100);
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.iconTrash {
+    cursor: pointer;
+    color: var(--gray-300);
+    transition: color 0.2s;
+    width: 2rem;
+    height: 2rem;
+}
+
+.iconTrash:hover {
+    color: var(--danger);
+}
+
+.taskToCheck {
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 2px solid var(--blue);
+    width: 1.5rem;
+    height: 1.5rem;
+    min-width: 1.5rem;
+    min-height: 1.5rem;
+}

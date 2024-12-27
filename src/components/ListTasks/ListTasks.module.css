@@ -1,0 +1,6 @@
+.listTasks {
+    margin: auto;
+    border-top: 2px solid var(--gray-500);
+    width: 50rem;
+    margin-top: -2rem;
+}   
