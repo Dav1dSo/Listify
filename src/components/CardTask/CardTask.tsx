@@ -1,14 +1,20 @@
 import styles from './CardTask.module.css'
 import checkIcon from '../../assets/check.svg'
+import { Task } from '../../types/Task'
 
-export function CardTask(check: boolean) {
+interface CardTaskProps {
+    task: Task;
+}
+
+export function CardTask({ task }: CardTaskProps) {
+
     return (
         <div className={styles.cardTask}>
             <button className={styles.taskToCheck} name="taskCheck" id="taskCheck" type="button"></button>
             {
-                check === true && <img src={checkIcon} alt="" />
+                task.isCompleted && <img src={checkIcon} alt="" />
             }
-            <p>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</p>
+            <p>{task.content}</p>
             <svg 
                 className={styles.iconTrash}
                 width="24" 
