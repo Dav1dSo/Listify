@@ -19,7 +19,7 @@ function App() {
       <Header />
       <NewTask onCreateTask={CreateTask}/>
       <InfosTasks />
-      <ListTasks tasks={tasks} />
+      <ListTasks tasks={tasks} setTasks={setTasks} />
     </>
   )
 }

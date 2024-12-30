@@ -4,18 +4,25 @@ import { Task } from '../../types/Task'
 
 interface CardTaskProps {
     task: Task;
+    onCheckTask: (taskId: string) => void;
+    ondeleteTask: (taskId: string) => void;
 }
 
-export function CardTask({ task }: CardTaskProps) {
+export function CardTask({ task, onCheckTask, ondeleteTask }: CardTaskProps) {
+
+    function checkTask(taskId: string) {
+        onCheckTask(taskId)
+    }
 
     return (
         <div className={styles.cardTask}>
-            <button className={styles.taskToCheck} name="taskCheck" id="taskCheck" type="button"></button>
+            { !task.isCompleted && <span onClick={() => checkTask(task.id)} className={styles.taskToCheck} name="taskCheck" id="taskCheck" type="button"></span>} 
             {
-                task.isCompleted && <img src={checkIcon} alt="" />
+                task.isCompleted && <span onClick={() => checkTask(task.id)}><img src={checkIcon} alt="" /></span>
             }
             <p>{task.content}</p>
             <svg 
+            onClick={() => ondeleteTask(task.id)}
                 className={styles.iconTrash}
                 width="24" 
                 height="24" 

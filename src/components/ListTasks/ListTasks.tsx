@@ -5,9 +5,20 @@ import { Task } from "../../types/Task";
 
 interface ListTasksProps {
     tasks: Task[];
+    setTasks: React.Dispatch<React.SetStateAction<Task[]>>
 }
 
-export function ListTasks({ tasks }: ListTasksProps) {
+export function ListTasks({ tasks, setTasks }: ListTasksProps) {
+
+    function handlerCheckTask(taskId: string) {
+        const taskToUpadte = tasks.find(task => task.id === taskId) 
+        taskToUpadte && (taskToUpadte.isCompleted = !taskToUpadte.isCompleted)
+        setTasks([...tasks ])
+    }
+
+    function handlerDeleteTask(taskId: string) {
+        setTasks(tasks.filter(task => task.id !== taskId))
+    }
 
     return (
         <div className={styles.listTasks}>
@@ -16,6 +27,8 @@ export function ListTasks({ tasks }: ListTasksProps) {
             <CardTask 
                 key={task.id} 
                 task={task} 
+                ondeleteTask={handlerDeleteTask}
+                onCheckTask={handlerCheckTask}
             />
             )) }
         </div>
