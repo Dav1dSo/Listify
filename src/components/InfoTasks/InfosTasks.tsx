@@ -1,11 +1,15 @@
 import styles from './InfosTasks.module.css'
 
-export function InfosTasks() {
-    return (
-        <div className={styles.info}>
-            <p>Tarefas criadas <span className={styles.count}>0</span></p>
-            <p>Concluídas <span className={styles.count}>0</span></p>
-        </div>
-    )
+interface InfosTasksProps {
+    totalTasks: number;
+    completedTasks: number;
 }
 
+export function InfosTasks({ totalTasks, completedTasks}: InfosTasksProps) {
+    return (
+        <div className={styles.info}>
+            <p>Tarefas criadas <span className={styles.count}>{totalTasks}</span></p>
+            <p>Concluídas <span className={styles.count}>{completedTasks} de {totalTasks}</span></p>
+        </div>
+    )
+} 

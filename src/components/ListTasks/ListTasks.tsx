@@ -5,15 +5,27 @@ import { Task } from "../../types/Task";
 
 interface ListTasksProps {
     tasks: Task[];
-    setTasks: React.Dispatch<React.SetStateAction<Task[]>>
+    setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
+    setCountCheck: React.Dispatch<React.SetStateAction<number>>;
+    setCount: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export function ListTasks({ tasks, setTasks }: ListTasksProps) {
+export function ListTasks({ tasks, setTasks, setCountCheck, setCount }: ListTasksProps) {
 
     function handlerCheckTask(taskId: string) {
-        const taskToUpadte = tasks.find(task => task.id === taskId) 
-        taskToUpadte && (taskToUpadte.isCompleted = !taskToUpadte.isCompleted)
+        const taskUpdated = tasks.find(task => task.id === taskId) 
+        taskUpdated && (taskUpdated.isCompleted = !taskUpdated.isCompleted)
+        
+        if (taskUpdated?.isCompleted) {
+            setCountCheck(state => state + 1)
+            setCount(state => state - 1)
+        } else {
+            setCountCheck(state => state - 1)
+            setCount(state => state + 1)
+        }
+
         setTasks([...tasks ])
+        
     }
 
     function handlerDeleteTask(taskId: string) {
